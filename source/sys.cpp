@@ -59,8 +59,8 @@ void createDir(const char *path)
 void sysInit()
 {
     romfsInit();
-    mkdir("/JKSV", 0777);
-    chdir("/JKSV");
+    mkdir("/3ds/data/JKSM", 0777);
+    chdir("/3ds/data/JKSM");
 
     if(fexists("colBin"))
         loadCol();
@@ -99,11 +99,11 @@ void sysInit()
     if(useLang)
         CFGU_GetSystemLanguage(&sysLanguage);
 
-    createDir("/JKSV/Saves");
-    createDir("/JKSV/ExtData");
-    createDir("/JKSV/SysSave");
-    createDir("/JKSV/Boss");
-    createDir("/JKSV/Shared");
+    createDir("/3ds/data/JKSM/Saves");
+    createDir("/3ds/data/JKSM/ExtData");
+    createDir("/3ds/data/JKSM/SysSave");
+    createDir("/3ds/data/JKSM/Boss");
+    createDir("/3ds/data/JKSM/Shared");
 
     prepareMenus();
 }
