@@ -31,7 +31,7 @@ BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
 INCLUDES	:=	include
-ROMFS       :=  romfs
+ROMFS       :=
 
 APP_TITLE		:= JK's Save Manager
 APP_DESCRIPTION	:= Save Manager
