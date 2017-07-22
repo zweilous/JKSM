@@ -18,6 +18,7 @@ You will need to install the following portlibs from: https://github.com/Naxann/
 zlib (install first) libpng (requires zlib) freetype (requires libpng) bzip2
 
 You will also need to build and install the latest ctrulib: https://github.com/smealum/ctrulib.git 
-next branch of citro3d: https://github.com/fincs/citro3d.git (git checkout next) 
+latest citro3d: https://github.com/fincs/citro3d.git (git checkout next) 
+At the time of this writing, both are @v.1.3.0
 xerpi's sf2d: https://github.com/xerpi/sf2dlib.git 
 xerpi's sftd: https://github.com/xerpi/sftdlib.git
