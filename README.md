@@ -11,14 +11,15 @@ Thanks to saibotu @Homebrew Discord #dev for helping to fix the makefile
 Thanks Naxann for 3ds_portlibs 
 smealum for ctrulib
 fincs for new-hbmenu/citro3d 
-xerpi for 2f2d/sftd portlibs.
+xerpi for sf2d/sftd/sfil portlibs.
 
 You will need to install the following portlibs from: https://github.com/Naxann/3ds_portlibs.git in order to build this from source:
 
 zlib (install first) libpng (requires zlib) freetype (requires libpng) bzip2
 
 You will also need to build and install the latest ctrulib: https://github.com/smealum/ctrulib.git 
-latest citro3d: https://github.com/fincs/citro3d.git (git checkout next) 
+latest citro3d: https://github.com/fincs/citro3d.git
 At the time of this writing, both are @v.1.3.0
 xerpi's sf2d: https://github.com/xerpi/sf2dlib.git 
 xerpi's sftd: https://github.com/xerpi/sftdlib.git
+xerpi's sfil: https://github.com/xerpi/sfillib.git
