@@ -265,11 +265,11 @@ void topBarExit()
 void drawTopBar(const std::u32string nfo)
 {
     //the bar
-    sf2d_draw_texture_scale(bar, 0, 0, 25, 1);
+    sf2d_draw_texture_scale(bar, 0, 0, 25, 255);
 
     //nfo is wide text, UTF32
-    sftd_draw_wtext(font, 0, 0, RGBA8(0, 0, 0, 255), 12, (wchar_t *)nfo.data());
+    sftd_draw_wtext(font, 0, 0, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, (wchar_t *)nfo.data());
 
     //time
-    sftd_draw_text(font, 360, 0, RGBA8(0, 0, 0, 255), 12, RetTime().c_str());
+    sftd_draw_text(font, 360, 0, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, RetTime().c_str());
 }

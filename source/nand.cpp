@@ -106,7 +106,7 @@ void nandBackup()
                 {
                     renameDir(*sysTitle);
                     createTitleDir(*sysTitle, MODE_SYSSAVE);
-                    backupData(*sysTitle, arch, MODE_SYSSAVE, false);
+                    backupData(*sysTitle, arch, MODE_SYSSAVE, false, false);
                 }
                 break;
             case sysOpts::impSys:
@@ -120,7 +120,7 @@ void nandBackup()
                 {
                     renameDir(*sysTitle);
                     createTitleDir(*sysTitle, MODE_EXTDATA);
-                    backupData(*sysTitle, arch, MODE_EXTDATA, false);
+                    backupData(*sysTitle, arch, MODE_EXTDATA, false, false);
                 }
                 break;
             case sysOpts::impExt:
@@ -134,7 +134,7 @@ void nandBackup()
                 {
                     renameDir(*sysTitle);
                     createTitleDir(*sysTitle, MODE_BOSS);
-                    backupData(*sysTitle, arch, MODE_BOSS, false);
+                    backupData(*sysTitle, arch, MODE_BOSS, false, false);
                 }
                 break;
             case sysOpts::impBoss:

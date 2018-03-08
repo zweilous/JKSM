@@ -13,10 +13,11 @@
 #include "backup.h"
 #include "restore.h"
 
-const std::string helpText = "Press L to select multiple. Press R to select all. Press Y to backup selected. Press X to restore selected.";
+//const std::string helpText = "Press L to select multiple. Press R to select all. Press Y to backup selected. Press X to restore selected.";
 
 //Help button
-static button help("Help", 224, 208, 96, 32);
+// static button help("Help", 224, 208, 96, 32);
+
 
 static menu titleMenu(40, 20, true, false);
 
@@ -81,17 +82,17 @@ void sdStartSelect()
         prevState = states::STATE_TITLEMENU;
         state = states::STATE_BACKUPMENU;
     }
-    else if(help.released(pos))
-    {
-        showMessage(helpText.c_str(), "Help");
-    }
+    //else if(help.released(pos))
+    //{
+    //    showMessage(helpText.c_str(), "Help");
+    //}
     else if(down & KEY_Y)
     {
-        autoBackup(titleMenu);
+        autoBackSave(titleMenu);
     }
     else if(down & KEY_X)
     {
-        autoRestore(titleMenu);
+        autoBackExt(titleMenu);
     }
     else if(down & KEY_B)
         state = states::STATE_MAINMENU;
@@ -105,7 +106,11 @@ void sdStartSelect()
 
     sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
     sdTitle[titleMenu.getSelected()].printInfo();
-    help.draw();
+    //help.draw();
+	sftd_draw_text_wrap(font, 7, 91, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, 306, "L = highlight entry");
+	sftd_draw_text_wrap(font, 7, 105, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, 306, "R = highlight all entries");
+	sftd_draw_text_wrap(font, 7, 119, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, 306, "Y = back up save of highlighted entries");
+	sftd_draw_text_wrap(font, 7, 133, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, 306, "X = back up extdata of highlighted entries");
     sf2d_end_frame();
 
     sf2d_swapbuffers();

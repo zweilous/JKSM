@@ -34,7 +34,7 @@ INCLUDES	:=	include
 ROMFS       :=
 
 APP_TITLE		:= JK's Save Manager
-APP_DESCRIPTION	:= Save Manager
+APP_DESCRIPTION	:= 3DS save manager.
 APP_AUTHOR		:= JK
 
 #---------------------------------------------------------------------------------

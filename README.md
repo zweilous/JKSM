@@ -1,25 +1,24 @@
-# JKSM Rosalina
-JKSM Rosalina: rev.333
+# jksm (jk's save manager) - rosalina-compatible only
 
-This is a fork from: Phalk/JKMS, originally forked from J-D-K/JKSM - JK's Save Manager This version's 3DSX is only compatible with the Rosalina entrypoint of the Homebrew Launcher. For the old *hax 3dsx please visit the original fork by JK.
+#### notes
 
-WARNING: This fork moves the JKSV folder from the root of the sdcard to the "3ds/data/JKSM" folder. You must move your saves there before you are able to restore it.
+only the `.3dsx` is able to be used. this fork is only compatible with the homebrew launcher using rosalina as the entrypoint. for old *hax entrypoints, please visit the [original fork by J-D-K](https://github.com/J-D-K/JKSM).
 
-Thanks to JK for the original JKSM 
-Thanks to Phalk for porting it over to Rosalina/new-hbmenu 2.0 
-Thanks to saibotu @Homebrew Discord #dev for helping to fix the makefile 
-Thanks Naxann for 3ds_portlibs 
-smealum for ctrulib
-fincs for new-hbmenu/citro3d 
-xerpi for sf2d/sftd/sfil portlibs.
+this fork moves `/jksv` to `/3ds/jksm`. saves must be moved to this new path before being able to access them.
 
-You will need to install the following portlibs from: https://github.com/Naxann/3ds_portlibs.git in order to build this from source:
+`filter.txt` manually filters out titles from appearing in the titles list after refreshing it.
 
-zlib (install first) libpng (requires zlib) freetype (requires libpng) bzip2
+#### building
 
-You will also need to build and install the latest ctrulib: https://github.com/smealum/ctrulib.git 
-latest citro3d: https://github.com/fincs/citro3d.git
-At the time of this writing, both are @v.1.3.0
-xerpi's sf2d: https://github.com/xerpi/sf2dlib.git 
-xerpi's sftd: https://github.com/xerpi/sftdlib.git
-xerpi's sfil: https://github.com/xerpi/sfillib.git
+build `jksm.3dsx` using `make` with the following installed:
+
+* [naxann's portlibs](https://github.com/Naxann/3ds_portlibs)
+	* zlib
+	* libpng (requires zlib)
+	* freetype (requires libpng)
+	* bzip2
+* [ctrulib](https://github.com/smealum/ctrulib)
+* [citro3d](https://github.com/fincs/citro3d)
+* [sf2dlib](https://github.com/xerpi/sf2dlib)
+* [sftdlib](https://github.com/xerpi/sftdlib)
+* [sfillib](https://github.com/xerpi/sfillib)

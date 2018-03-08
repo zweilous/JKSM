@@ -13,15 +13,15 @@
 //I stole these from 3dbrew. Kill me.
 std::string descs[] =
 {
-    "From 3DBrew.org: Home Menu attempts to open this archive during boot, if FS:OpenArchive doesn't return an error Home Menu seems to then launch the System Transfer application. Home Menu doesn't actually use this archive at all except for checking whether it exists.",
-    "From 3DBrew.org: NAND JPEG/MPO files and phtcache.bin from the camera application are stored here. This also contains UploadData.dat. ",
-    "From 3DBrew.org: NAND M4A files from the sound application are stored here ",
-    "From 3DBrew.org: ???",
-    "From 3DBrew.org: Contains idb.dat, idbt.dat, gamecoin.dat, ubll.lst, CFL_DB.dat, and CFL_OldDB.dat. These files contain cleartext Miis and some data relating (including cached ICN data) to Play/Usage Records.",
-    "From 3DBrew.org: Contains bashotorya.dat and bashotorya2.dat.",
-    "From 3DBrew.org: ???",
-    "From 3DBrew.org: Contains versionlist.dat, used by Home Menu for the software update notification added with 7.0.0-13.",
-    "This means go back."
+    "Home Menu attempts to open this archive during boot, if FS:OpenArchive doesn't return an error Home Menu seems to then launch the System Transfer application. Home Menu doesn't actually use this archive at all except for checking whether it exists.",
+    "NAND JPEG/MPO files and phtcache.bin from the camera application are stored here. This also contains UploadData.dat.",
+    "NAND M4A files from the sound application are stored here",
+    "Used for SpotPass content storage for notifications.",
+    "Contains idb.dat, idbt.dat, gamecoin.dat, ubll.lst, CFL_DB.dat, and CFL_OldDB.dat. These files contain cleartext Miis and some data relating (including cached ICN data) to Play/Usage Records.",
+    "Contains bashotorya.dat and bashotorya2.dat.",
+    "Home Menu SpotPass content data storage.",
+    "Contains versionlist.dat, used by Home Menu for the software update notification added with 7.0.0-13.",
+    "Return to the previous menu."
 };
 
 enum sharedOpts
@@ -33,7 +33,8 @@ enum sharedOpts
     fb,
     fc,
     fd,
-    fe
+    fe,
+	back
 };
 
 enum sharedBack
@@ -75,7 +76,7 @@ void sharedBackupMenu()
                 if(openSharedExt(&arch, selShared.extdata))
                 {
                     createTitleDir(selShared, MODE_SHARED);
-                    backupData(selShared, arch, MODE_SHARED, false);
+                    backupData(selShared, arch, MODE_SHARED, false, false);
                 }
                 break;
             case sharedBack::_imp:
@@ -184,7 +185,7 @@ void sharedExtManager()
     sf2d_end_frame();
 
     sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
-    sftd_draw_text_wrap(font, 0, 0, RGBA8(255, 255, 255, 255), 12, 320, descs[sharedMenu.getSelected()].c_str());
+    sftd_draw_text_wrap(font, 7, 7, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, 306, descs[sharedMenu.getSelected()].c_str());
     sf2d_end_frame();
 
     sf2d_swapbuffers();

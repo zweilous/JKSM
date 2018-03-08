@@ -10,6 +10,7 @@ arch = opened FS_Archive
 mode = where to export data to
 auto = whether or not to just grab date or get user input
 */
-bool backupData(const titleData dat, FS_Archive arch, int mode, bool autoName);
-void autoBackup(menu m);
+bool backupData(const titleData dat, FS_Archive arch, int mode, bool autoName, bool fromRestore);
+void autoBackSave(menu m);
+void autoBackExt(menu m);
 #endif // BACKUP_H

@@ -19,7 +19,7 @@ bool downloadFilter()
 
     httpcContext filter;
 
-    Result res = httpcOpenContext(&filter, HTTPC_METHOD_GET, "https://raw.githubusercontent.com/J-D-K/JKSM/master/filter.txt", 1);
+    Result res = httpcOpenContext(&filter, HTTPC_METHOD_GET, "https://raw.githubusercontent.com/zweilous/JKSM/master/filter.txt", 1);
     if(res)
     {
         showError("Open context.", (unsigned)res);

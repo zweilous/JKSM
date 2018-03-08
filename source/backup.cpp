@@ -79,7 +79,7 @@ void copyDirToSD(FS_Archive save, const std::u16string from, const std::u16strin
     }
 }
 
-bool backupData(const titleData dat, FS_Archive arch, int mode, bool autoName)
+bool backupData(const titleData dat, FS_Archive arch, int mode, bool autoName, bool fromRestore)
 {
     //This is our path to SD folder. UTF16
     std::u16string pathOut;
@@ -94,12 +94,24 @@ bool backupData(const titleData dat, FS_Archive arch, int mode, bool autoName)
             slot += tou16(" - AutoBack");
     }
     else
+	{
         slot = getFolder(dat, mode, true);
+	}
 
     if(slot.empty())
+	{
         return false;
+	}
+	
+	// confirm backup unless it's auto during restore
+	if(!fromRestore)
+	{
+		std::string ask = "Are you sure you want to back up your current save data?";
+		if(!confirm(ask.c_str()))
+			return false;
+	}
 
-    //get path returns path to /3ds/data/JKSM/[DIR]
+    //get path returns path to /3ds/jksm/[DIR]
     pathOut = getPath(mode) + dat.nameSafe + (char16_t)'/' + slot;
     std::u16string recreate = pathOut;//need this later after directory is deleted.
     pathOut += (char16_t)'/';
@@ -121,7 +133,7 @@ bool backupData(const titleData dat, FS_Archive arch, int mode, bool autoName)
     return true;
 }
 
-void autoBackup(menu m)
+void autoBackSave(menu m)
 {
     showMessage("This can take a few minutes depending on how many titles are selected.", "Info");
 
@@ -137,21 +149,37 @@ void autoBackup(menu m)
         if(m.optSelected(i) && openSaveArch(&saveArch, sdTitle[i], false))   //if it's selected and we can open save archive
         {
             createTitleDir(sdTitle[i], MODE_SAVE);
-            backupData(sdTitle[i], saveArch, MODE_SAVE, true);
+            backupData(sdTitle[i], saveArch, MODE_SAVE, true, true);
             dumpCount++;
             dumped = true;
         }
         FSUSER_CloseArchive(saveArch);
 
+        sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
+        autoDump.draw(i);
+        sf2d_end_frame();
+        sf2d_swapbuffers();
+    }
+
+    showMessage("Finished!", "Success!");
+}
+
+void autoBackExt(menu m)
+{
+    showMessage("This can take a few minutes depending on how many titles are selected.", "Info");
+
+
+    progressBar autoDump((float)m.getSelectCount(), "Copying saves... ", "Auto Backup");
+    //Keep track of what's done
+    float dumpCount = 0;
+    for(unsigned i = 0; i < m.getSize(); i++)
+    {
         FS_Archive extArch;
         if(m.optSelected(i) && openExtdata(&extArch, sdTitle[i], false))
         {
             createTitleDir(sdTitle[i], MODE_EXTDATA);
-            backupData(sdTitle[i], extArch, MODE_EXTDATA, true);
-
-            //check first to make sure we don't count it twice because no save arch
-            if(!dumped)
-                dumpCount++;
+            backupData(sdTitle[i], extArch, MODE_EXTDATA, true, true);
+			dumpCount++;
         }
         FSUSER_CloseArchive(extArch);
 

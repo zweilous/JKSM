@@ -46,9 +46,10 @@ void saveColBin()
 {
     FILE *colBin = fopen("colBin", "wb");
 
-    fwrite(clearColor, 1, 3, colBin);
-    fwrite(selColor, 1, 3, colBin);
-    fwrite(unSelColor, 1, 3, colBin);
+	fwrite(clearColor, 1, 3, colBin);
+	fwrite(selColor, 1, 3, colBin);
+	fwrite(unSelColor, 1, 3, colBin);
+	fwrite(infoColor, 1, 3, colBin);
 
     fclose(colBin);
 }
@@ -99,6 +100,20 @@ void setUnselColor()
     }
 }
 
+void setInfoColor()
+{
+    showMessage("Enter RGB info for the color wanted.", "Info");
+
+    int RGB[3];
+    if( (RGB[0] = getInt("Information Red", infoColor[0], 255)) != -1 && (RGB[1] = getInt("Information Green", infoColor[1], 255)) != -1 && (RGB[2] = getInt("Information Blue", infoColor[2], 255)) != -1)
+    {
+        for(int i = 0; i < 3; i++)
+            infoColor[i] = RGB[i];
+
+        saveColBin();
+    }
+}
+
 enum extraOpts
 {
     setPlay,
@@ -108,6 +123,7 @@ enum extraOpts
     bgColor,
     slColor,
     unslColor,
+	infColor,
     back
 };
 
@@ -149,6 +165,7 @@ void prepExtras()
     extra.addItem("Set Background Color");
     extra.addItem("Set Selected Item Color");
     extra.addItem("Set Unselected Item Color");
+    extra.addItem("Set Information Text Color");
     extra.addItem("Back");
 
     extra.autoVert();
@@ -157,13 +174,14 @@ void prepExtras()
 static const std::string helpDescs[] =
 {
     "Sets play coins to a number between 0 - 300",
-    "Sets whether title select, nand title select, and folder select menus are centered. (Requires reboot to take effect.)",
-    "Automatically creates a backup when save data is imported. Just in case!",
-    "Uses system language when getting titles. Defaults to English if title is empty.",
-    "Sets the background color. Asks for RGB info in that order",
-    "Sets the color of selected options in menus. Asks for RGB info in that order",
-    "Sets the color of unselected menu options. Asks for RGB info in that order",
-    "This means go back."
+    "Sets whether title select, NAND title select, and folder select menus are centered. Requires reboot to take effect.",
+    "Automatically creates a backup when save data is imported.",
+    "Uses system language when retrieving titles. If the title is empty, the default language is English.",
+    "Sets the background color. Asks for RGB info in that order.",
+    "Sets the color of selected options in menus. Asks for RGB info in that order.",
+    "Sets the color of unselected menu options. Asks for RGB info in that order.",
+	"Sets the color of information text. Asks for RGB info in that order.",
+    "Return to the previous menu."
 };
 
 void extrasMenu()
@@ -205,6 +223,9 @@ void extrasMenu()
             case extraOpts::unslColor:
                 setUnselColor();
                 break;
+            case extraOpts::infColor:
+                setInfoColor();
+                break;
             case extraOpts::back:
                 state = STATE_MAINMENU;
                 break;
@@ -221,7 +242,7 @@ void extrasMenu()
     sf2d_end_frame();
 
     sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
-        sftd_draw_text_wrap(font, 0, 0, RGBA8(255, 255, 255, 255), 12, 320, helpDescs[extra.getSelected()].c_str());
+        sftd_draw_text_wrap(font, 7, 7, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, 306, helpDescs[extra.getSelected()].c_str());
     sf2d_end_frame();
 
     sf2d_swapbuffers();

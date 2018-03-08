@@ -39,9 +39,9 @@ void backupMenu()
 
     std::u32string info = curTitle->u32Name;
     if(curTitle->media == MEDIATYPE_GAME_CARD)
-        info += U" : Cart";
+        info += U" : Cartridge";
     else
-        info += U" : SD/CIA";
+        info += U" : SD Title";
 
     hidScanInput();
     u32 down = hidKeysDown();

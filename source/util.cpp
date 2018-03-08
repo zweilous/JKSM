@@ -163,22 +163,22 @@ std::u16string getPath(int mode)
     switch(mode)
     {
         case MODE_SAVE:
-            return tou16("/3ds/data/JKSM/Saves/");
+            return tou16("/3ds/jksm/saves/");
             break;
         case MODE_EXTDATA:
-            return tou16("/3ds/data/JKSM/ExtData/");
+            return tou16("/3ds/jksm/extdata/");
             break;
         case MODE_BOSS:
-            return tou16("/3ds/data/JKSM/Boss/");
+            return tou16("/3ds/jksm/boss/");
             break;
         case MODE_SYSSAVE:
-            return tou16("/3ds/data/JKSM/SysSave/");
+            return tou16("/3ds/jksm/syssave/");
             break;
         case MODE_SHARED:
-            return tou16("/3ds/data/JKSM/Shared/");
+            return tou16("/3ds/jksm/shared/");
             break;
         default:
-            return tou16("/3ds/data/JKSM/");
+            return tou16("/3ds/jksm/");
             break;
     }
 }

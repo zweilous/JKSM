@@ -15,7 +15,7 @@
 #define MODE_BOSS 3
 #define MODE_SHARED 4
 
-#define BUILD_DATE std::u32string(U"2-10-2017")
+#define BUILD_DATE std::u32string(U"(v2.0)")
 
 extern int state, prevState;
 extern u8 sysLanguage;
@@ -58,6 +58,7 @@ void killApp(u32 up);
 extern u8 clearColor[3];
 extern u8 selColor[3];
 extern u8 unSelColor[3];
+extern u8 infoColor[3];
 
 void mainMenu();
 

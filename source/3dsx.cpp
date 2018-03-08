@@ -74,7 +74,7 @@ void start3dsxMode()
                     if(openSaveArch3dsx(&arch))
                     {
                         createTitleDir(data, MODE_SAVE);
-                        backupData(data, arch, MODE_SAVE, false);
+                        backupData(data, arch, MODE_SAVE, false, false);
                     }
                     break;
                 case hblOpts::impSav:
@@ -91,7 +91,7 @@ void start3dsxMode()
                     if(openExtdata(&arch, data, true))
                     {
                         createTitleDir(data, MODE_EXTDATA);
-                        backupData(data, arch, MODE_EXTDATA, false);
+                        backupData(data, arch, MODE_EXTDATA, false, false);
                     }
                     break;
                 case hblOpts::impExt:

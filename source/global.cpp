@@ -37,6 +37,7 @@ bool centered = true, autoBack = false, useLang = false;
 u8 clearColor[3] = {0, 0, 0};
 u8 selColor[3] = {0, 255, 0};
 u8 unSelColor[3] = {128, 128, 128};
+u8 infoColor[3] = {255, 255, 255};
 
 //I needed a quick way to get most of it under one loop without having to completely rewrite it
 //This is what I came up with.
@@ -164,13 +165,13 @@ void mainMenu()
                 break;
         }
     }
-    else if(down & KEY_B)
-        kill = true;
+    //else if(down & KEY_B)
+    //    kill = true;
 
     killApp(down);
 
     sf2d_start_frame(GFX_TOP, GFX_LEFT);
-    drawTopBar(std::u32string(U"JKSM - " + BUILD_DATE));
+    drawTopBar(std::u32string(U"JKSM " + BUILD_DATE));
     mMenu.draw();
     sf2d_end_frame();
 

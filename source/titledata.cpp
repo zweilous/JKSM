@@ -87,11 +87,11 @@ void titleData::initId()
 
 void titleData::printInfo()
 {
-    sftd_draw_textf(font, 0, 0, RGBA8(0, 255, 255, 255), 12, "High ID : %08X", high);
-    sftd_draw_textf(font, 0, 14, RGBA8(255, 255, 0, 255), 12, "Low ID : %08X", low);
-    sftd_draw_textf(font, 0, 28, RGBA8(0, 255, 0, 255), 12, "Prod. Code : %s", prodCode.c_str());
+    sftd_draw_textf(font, 7, 7, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, "High ID : %08X", high);
+    sftd_draw_textf(font, 7, 21, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, "Low ID : %08X", low);
+    sftd_draw_textf(font, 7, 35, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, "Product Code : %s", prodCode.c_str());
     if(media == MEDIATYPE_GAME_CARD)
-        sftd_draw_text(font, 0, 42, RGBA8(255, 0, 0, 255), 12, "Game Card");
+        sftd_draw_text(font, 7, 49, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, "Game Cartridge");
     else if(media == MEDIATYPE_SD)
-        sftd_draw_text(font, 0, 42, RGBA8(255, 0, 0, 255), 12, "SD/CIA Title");
+        sftd_draw_text(font, 7, 49, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, "SD Title");
 }

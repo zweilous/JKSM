@@ -59,7 +59,7 @@ void showExtMenu()
                 if(openExtdata(&extData, *curTitle, true))
                 {
                     createTitleDir(*curTitle, MODE_EXTDATA);
-                    backupData(*curTitle, extData, MODE_EXTDATA, false);
+                    backupData(*curTitle, extData, MODE_EXTDATA, false, false);
                 }
                 break;
             case extOpts::impExt:

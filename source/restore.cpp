@@ -87,7 +87,7 @@ bool restoreData(const titleData dat, FS_Archive arch, int mode)
         return false;
 
     if(autoBack)
-        backupData(dat, arch, mode, true);
+        backupData(dat, arch, mode, true, true);
 
     sdPath = getPath(mode) + dat.nameSafe + (char16_t)'/' + keepName + (char16_t)'/';
 
@@ -131,7 +131,7 @@ bool restoreDataSDPath(const titleData dat, FS_Archive arch, int mode)
         FSUSER_DeleteDirectoryRecursively(arch, fsMakePath(PATH_ASCII, "/"));
 
     if(autoBack)
-        backupData(dat, arch, mode, true);
+        backupData(dat, arch, mode, true, true);
 
     copyDirToArch(arch, sdPath, archPath, mode);
 

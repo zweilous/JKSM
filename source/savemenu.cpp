@@ -63,7 +63,7 @@ void showSaveMenu()
                 if(openSaveArch(&saveArch, *curTitle, true))
                 {
                     createTitleDir(*curTitle, MODE_SAVE);
-                    backupData(*curTitle, saveArch, MODE_SAVE, false);
+                    backupData(*curTitle, saveArch, MODE_SAVE, false, false);
                 }
                 break;
             case saveOpts::impSav:

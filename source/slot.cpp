@@ -98,11 +98,13 @@ std::u16string getFolder(const titleData dat, int mode, bool newFolder)
             break;
 
         sf2d_start_frame(GFX_TOP, GFX_LEFT);
-        drawTopBar(U"Select a folder. X = Rename, Y = Delete");
+        drawTopBar(U"Select a save archive");
         folderMenu.draw();
         sf2d_end_frame();
 
         sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
+		sftd_draw_text(font, 7, 7, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, "X = rename save archive");
+		sftd_draw_text(font, 7, 21, RGBA8(infoColor[0], infoColor[1], infoColor[2], 255), 12, "Y = delete save archive");
         sf2d_end_frame();
 
         sf2d_swapbuffers();
