@@ -19,6 +19,9 @@ u32 extdataRedirect(u32 low)
     //Pokemon Moon
     else if(low == 0x00175E00)
         return 0x00001648;
+	// Pokemon Ultra Moon
+	else if (low == 0x001B5100)
+		return 0x00001B50;
     //Fire Emblem Conquest + SE NA
     else if(low == 0x00179600 || low == 0x00179800)
         return 0x00001794;

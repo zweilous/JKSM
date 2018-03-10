@@ -116,7 +116,7 @@ void prepMain()
     mMenu.addItem("Shared ExtData");
     mMenu.addItem("Refresh Games");
     mMenu.addItem("Download Filter");
-    mMenu.addItem("Config/Extras");
+    mMenu.addItem("Settings");
     mMenu.addItem("Exit");
 
     if(devMode)

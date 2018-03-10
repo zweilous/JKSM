@@ -30,7 +30,7 @@ void setPlayCoins()
         coinAmount = gameCoin.getByte();
         coinAmount += gameCoin.getByte() << 8;
 
-        coinAmount = getInt("Enter a number between 0 and 300",  coinAmount, 300);
+        coinAmount = getInt("Enter a number between 0 and 300.",  coinAmount, 300);
         if(coinAmount != -1)
         {
             gameCoin.seek(-2, seek_cur);
@@ -56,7 +56,7 @@ void saveColBin()
 
 void setBGColor()
 {
-    showMessage("Enter RGB info for the color wanted.", "Info");
+    showMessage("Enter RGB values for the color wanted.", "Info");
 
     int RGB[3];
 
@@ -73,7 +73,7 @@ void setBGColor()
 
 void setSelColor()
 {
-    showMessage("Enter RGB info for the color wanted.", "Info");
+    showMessage("Enter RGB values for the color wanted.", "Info");
 
     int RGB[3];
 
@@ -88,7 +88,7 @@ void setSelColor()
 
 void setUnselColor()
 {
-    showMessage("Enter RGB info for the color wanted.", "Info");
+    showMessage("Enter RGB values for the color wanted.", "Info");
 
     int RGB[3];
     if( (RGB[0] = getInt("Unselected Red", unSelColor[0], 255)) != -1 && (RGB[1] = getInt("Unselected Green", unSelColor[1], 255)) != -1 && (RGB[2] = getInt("Unselected Blue", unSelColor[2], 255)) != -1)
@@ -102,7 +102,7 @@ void setUnselColor()
 
 void setInfoColor()
 {
-    showMessage("Enter RGB info for the color wanted.", "Info");
+    showMessage("Enter RGB values for the color wanted.", "Info");
 
     int RGB[3];
     if( (RGB[0] = getInt("Information Red", infoColor[0], 255)) != -1 && (RGB[1] = getInt("Information Green", infoColor[1], 255)) != -1 && (RGB[2] = getInt("Information Blue", infoColor[2], 255)) != -1)
@@ -173,14 +173,14 @@ void prepExtras()
 
 static const std::string helpDescs[] =
 {
-    "Sets play coins to a number between 0 - 300",
+    "Sets play coins to a number between 0 - 300.",
     "Sets whether title select, NAND title select, and folder select menus are centered. Requires reboot to take effect.",
     "Automatically creates a backup when save data is imported.",
     "Uses system language when retrieving titles. If the title is empty, the default language is English.",
-    "Sets the background color. Asks for RGB info in that order.",
-    "Sets the color of selected options in menus. Asks for RGB info in that order.",
-    "Sets the color of unselected menu options. Asks for RGB info in that order.",
-	"Sets the color of information text. Asks for RGB info in that order.",
+    "Sets the main background color. Enter RGB values in order of R, G, B.",
+    "Sets the color of the selected option in a menu. Enter RGB values in order of R, G, B.",
+    "Sets the color of the unselected item in a menu. Enter RGB values in order of R, G, B.",
+	"Sets the color of information text. Enter RGB values in order of R, G, B.",
     "Return to the previous menu."
 };
 
@@ -237,7 +237,7 @@ void extrasMenu()
     killApp(down);
 
     sf2d_start_frame(GFX_TOP, GFX_LEFT);
-    drawTopBar(U"Config/Extras");
+    drawTopBar(U"Settings");
     extra.draw();
     sf2d_end_frame();
 
