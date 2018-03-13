@@ -4,7 +4,7 @@
 
 only the `.3dsx` is able to be used. this fork is only compatible with the homebrew launcher using rosalina as the entrypoint. for old *hax entrypoints, please visit the [original fork by J-D-K](https://github.com/J-D-K/JKSM).
 
-this fork moves `/jksv` to `/3ds/jksm`. saves must be moved to this new path before being able to access them.
+this fork moves the contents of `/jksv` to `/3ds/jksm`. saves must be moved to this new path before being able to access them.
 
 `filter.txt` manually filters out titles from appearing in the titles list after refreshing it.
 
